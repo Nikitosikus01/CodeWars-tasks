@@ -6,36 +6,41 @@
 // Examples
 // 'a' and 'g' returns 1
 // 'A' and 'C' returns 1
-
+// 'b' and 'G' returns 0
+// 'B' and 'g' returns 0
+// '0' and '?' returns -1
 
 
 // prompt("enter a: ", "");
-let aa = 'a';
-let bb = 'b';
-let str = 'a,b,c,d,A,B,C,D';
-let arrLetters = str.split(',');
-// console.log(arrLetters);
-let upperA = aa.toUpperCase();
-let upperB = bb.toUpperCase();
-console.log(upperB);
-function sameCase(a, b){
-    // for (let index of arrLetters) {
-    //     if (index !== a){
-    //         return -1;
-    //     } 
-    //     if (index !== b){
-    //         return -1;
-    //     } 
-    // }
 
-    if (a === upperA || b === upperB){
-        return 0;
-    } else if (a === upperA & b === upperB || a !== upperA & b !== upperB){
-        return 1;    
+function sameCase(a, b){
+    const alfabet = 'qewrtyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'.split('');
+    function checkAlfabet (val){
+        for (const iterator of alfabet) {
+            if (val === iterator){
+                return true; 
+            }
+        }
+    }
+
+    if (checkAlfabet(a) & checkAlfabet(b)) {
+        let changeA = a.toUpperCase();
+        let changeB = b.toUpperCase();
+        if (changeA === a & changeB !== b || changeA !== a & changeB === b) {
+            return 0;
+        } else {
+            return 1;
+        }
+    } else {
+        return -1;
     }
 }
 
-console.log(sameCase(aa, bb));
+console.log(sameCase('1', 'r'));
+console.log(sameCase('w', '&'));
+console.log(sameCase('W', 'R'));
+console.log(sameCase('m', 'b'));
+console.log(sameCase('H', 'h'));
 
 
 
