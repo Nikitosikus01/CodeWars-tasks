@@ -4,8 +4,20 @@
 
 
 function maxTriSum(numbers){
-    //your code here
-  }
+    numbers.sort(function(a, b){ return b - a; });
+    console.log(numbers);
+    let tripletSum = numbers[0], amount = 1;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] !== numbers[i + 1]) {
+            tripletSum += numbers[i + 1];
+            amount++;
+            if (amount === 3) {
+                return tripletSum;
+            }
+        }
+    } 
+}
+
 
 
 
